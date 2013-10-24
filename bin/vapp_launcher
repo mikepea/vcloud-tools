@@ -73,7 +73,7 @@ vcloud = Fog::Compute::VcloudDirector.new
 org = vcloud.organizations.get_by_name(vcloud.org_name)
 
 if org.name 
-  debug "Got vCloud org: #{org.name}"
+  puts "Got vCloud org: #{org.name}"
 else 
   Kernel.abort "#{$0}: Error retrieving vCloud organization"
 end
@@ -83,7 +83,8 @@ unless org.vdcs.size > 0
 end
 
 unless vdc = org.vdcs.get_by_name(options[:vdc_name])
-  puts "Could not find a vDC named '#{options[:vdc_name]}' in #{org.name}. Valid vDC names are:"
+  puts "Could not find a vDC named '#{options[:vdc_name]}' in #{org.name}."
+  puts "Valid vDC names are:"
   org.vdcs.each do |v| 
     puts "  #{v.name}"
   end
@@ -91,7 +92,8 @@ unless vdc = org.vdcs.get_by_name(options[:vdc_name])
 end
 
 unless catalog = org.catalogs.get_by_name(options[:catalog_name])
-  puts "Could not find a Catalog named '#{options[:catalog_name]}' in #{org.name}. Valid Catalog names are:"
+  puts "Could not find a Catalog named '#{options[:catalog_name]}' in #{org.name}."
+  puts "Valid Catalog names are:"
   org.catalogs.each do |v| 
     puts "  #{v.name}"
   end
@@ -99,7 +101,8 @@ unless catalog = org.catalogs.get_by_name(options[:catalog_name])
 end
 
 unless template = catalog.catalog_items.get_by_name(options[:vapp_template_name])
-  puts "Could not find a vApp Template named '#{options[:vapp_template_name]}' in #{org.name}. Valid vApp Template names are:"
+  puts "Could not find a vApp Template named '#{options[:vapp_template_name]}' in #{org.name}."
+  puts "Valid vApp Template names are:"
   catalog.catalog_items.each do |v| 
     puts "  #{v.name}"
   end
