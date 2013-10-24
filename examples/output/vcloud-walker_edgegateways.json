@@ -1,0 +1,218 @@
+[
+  {
+    "xmlns": "http://www.vmware.com/vcloud/v1.5",
+    "xmlns_xsi": "http://www.w3.org/2001/XMLSchema-instance",
+    "status": "1",
+    "name": "0e7t-Gateway-001",
+    "id": "urn:vcloud:gateway:b1917ae2-2d6a-45e6-b15c-2452aabff292",
+    "type": "application/vnd.vmware.admin.edgeGateway+xml",
+    "href": "https://myvdc.carrenza.net/api/admin/edgeGateway/b1917ae2-2d6a-45e6-b15c-2452aabff292",
+    "xsi_schemaLocation": "http://www.vmware.com/vcloud/v1.5 http://myvdc.carrenza.net/api/v1.5/schema/master.xsd",
+    "Link": [
+      {
+        "rel": "up",
+        "type": "application/vnd.vmware.vcloud.vdc+xml",
+        "href": "https://myvdc.carrenza.net/api/vdc/6d64fa20-e98d-46dd-ac18-86275a3fd042"
+      },
+      {
+        "rel": "edgeGateway:redeploy",
+        "href": "https://myvdc.carrenza.net/api/admin/edgeGateway/b1917ae2-2d6a-45e6-b15c-2452aabff292/action/redeploy"
+      },
+      {
+        "rel": "edgeGateway:configureServices",
+        "type": "application/vnd.vmware.admin.edgeGatewayServiceConfiguration+xml",
+        "href": "https://myvdc.carrenza.net/api/admin/edgeGateway/b1917ae2-2d6a-45e6-b15c-2452aabff292/action/configureServices"
+      },
+      {
+        "rel": "edgeGateway:reapplyServices",
+        "href": "https://myvdc.carrenza.net/api/admin/edgeGateway/b1917ae2-2d6a-45e6-b15c-2452aabff292/action/reapplyServices"
+      },
+      {
+        "rel": "edgeGateway:syncSyslogSettings",
+        "href": "https://myvdc.carrenza.net/api/admin/edgeGateway/b1917ae2-2d6a-45e6-b15c-2452aabff292/action/syncSyslogServerSettings"
+      }
+    ],
+    "Configuration": {
+      "GatewayBackingConfig": "compact",
+      "GatewayInterfaces": {
+        "GatewayInterface": [
+          {
+            "Name": "CAR-VCLOUD-EXT-667",
+            "DisplayName": "CAR-VCLOUD-EXT-667",
+            "Network": {
+              "type": "application/vnd.vmware.admin.network+xml",
+              "name": "CAR-VCLOUD-EXT-667",
+              "href": "https://myvdc.carrenza.net/api/admin/network/5d4ab16b-df39-4f81-9a68-c7cf2bec6bb4"
+            },
+            "InterfaceType": "uplink",
+            "SubnetParticipation": {
+              "Gateway": "31.210.241.1",
+              "Netmask": "255.255.255.0",
+              "IpAddress": "31.210.241.25"
+            },
+            "ApplyRateLimit": "false",
+            "InRateLimit": "100.0",
+            "OutRateLimit": "100.0",
+            "UseForDefaultRoute": "true"
+          },
+          {
+            "Name": "Default",
+            "DisplayName": "Default",
+            "Network": {
+              "type": "application/vnd.vmware.admin.network+xml",
+              "name": "Default",
+              "href": "https://myvdc.carrenza.net/api/admin/network/2ad93597-7b54-43dd-9eb1-631dd337e5a7"
+            },
+            "InterfaceType": "internal",
+            "SubnetParticipation": {
+              "Gateway": "192.168.1.0",
+              "Netmask": "255.255.0.0",
+              "IpAddress": "192.168.1.0"
+            },
+            "ApplyRateLimit": "false",
+            "UseForDefaultRoute": "false"
+          }
+        ]
+      },
+      "EdgeGatewayServiceConfiguration": {
+        "FirewallService": {
+          "IsEnabled": "true",
+          "DefaultAction": "allow",
+          "LogDefaultAction": "false",
+          "FirewallRule": {
+            "Id": "1",
+            "IsEnabled": "true",
+            "MatchOnTranslate": "false",
+            "Description": "description",
+            "Policy": "allow",
+            "Protocols": {
+              "Tcp": "true"
+            },
+            "Port": "22",
+            "DestinationPortRange": "22",
+            "DestinationIp": "internal",
+            "SourcePort": "22",
+            "SourcePortRange": "22",
+            "SourceIp": "external",
+            "EnableLogging": "false"
+          }
+        },
+        "NatService": {
+          "IsEnabled": "true",
+          "NatRule": [
+            {
+              "RuleType": "SNAT",
+              "IsEnabled": "true",
+              "Id": "65538",
+              "GatewayNatRule": {
+                "Interface": {
+                  "type": "application/vnd.vmware.admin.network+xml",
+                  "name": "Default",
+                  "href": "https://myvdc.carrenza.net/api/admin/network/2ad93597-7b54-43dd-9eb1-631dd337e5a7"
+                },
+                "OriginalIp": "192.168.2.2",
+                "TranslatedIp": "37.26.89.189"
+              }
+            },
+            {
+              "RuleType": "DNAT",
+              "IsEnabled": "true",
+              "Id": "65539",
+              "GatewayNatRule": {
+                "Interface": {
+                  "type": "application/vnd.vmware.admin.network+xml",
+                  "name": "Default",
+                  "href": "https://myvdc.carrenza.net/api/admin/network/2ad93597-7b54-43dd-9eb1-631dd337e5a7"
+                },
+                "OriginalIp": "37.26.89.189",
+                "OriginalPort": "22",
+                "TranslatedIp": "192.168.2.2",
+                "TranslatedPort": "22",
+                "Protocol": "tcp"
+              }
+            }
+          ]
+        },
+        "LoadBalancerService": {
+          "IsEnabled": "true",
+          "Pool": {
+            "Name": "web-app",
+            "ServicePort": [
+              {
+                "IsEnabled": "true",
+                "Protocol": "HTTP",
+                "Algorithm": "ROUND_ROBIN",
+                "Port": "80",
+                "HealthCheckPort": "80",
+                "HealthCheck": {
+                  "Mode": "HTTP",
+                  "HealthThreshold": "1",
+                  "UnhealthThreshold": "6",
+                  "Interval": "20",
+                  "Timeout": "25"
+                }
+              },
+              {
+                "IsEnabled": "true",
+                "Protocol": "HTTPS",
+                "Algorithm": "ROUND_ROBIN",
+                "Port": "443",
+                "HealthCheckPort": "443",
+                "HealthCheck": {
+                  "Mode": "SSL",
+                  "HealthThreshold": "1",
+                  "UnhealthThreshold": "6",
+                  "Interval": "20",
+                  "Timeout": "25"
+                }
+              }
+            ],
+            "Member": {
+              "IpAddress": "192.168.254.100",
+              "Weight": "1",
+              "ServicePort": {
+                "Protocol": "HTTP",
+                "Port": "80",
+                "HealthCheckPort": "80"
+              }
+            },
+            "Operational": "false"
+          },
+          "VirtualServer": {
+            "IsEnabled": "true",
+            "Name": "app1",
+            "Description": "app1",
+            "Interface": {
+              "type": "application/vnd.vmware.vcloud.orgVdcNetwork+xml",
+              "name": "Default",
+              "href": "https://myvdc.carrenza.net/api/admin/network/2ad93597-7b54-43dd-9eb1-631dd337e5a7"
+            },
+            "IpAddress": "192.168.2.2",
+            "ServiceProfile": [
+              {
+                "IsEnabled": "true",
+                "Protocol": "HTTP",
+                "Port": "80",
+                "Persistence": {
+                  "Method": ""
+                }
+              },
+              {
+                "IsEnabled": "true",
+                "Protocol": "HTTPS",
+                "Port": "443",
+                "Persistence": {
+                  "Method": ""
+                }
+              }
+            ],
+            "Logging": "false",
+            "Pool": "web-app"
+          }
+        }
+      },
+      "HaEnabled": "false",
+      "UseDefaultRouteForDnsRelay": "false"
+    }
+  }
+]

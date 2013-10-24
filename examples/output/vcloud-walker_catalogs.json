@@ -1,0 +1,136 @@
+[
+  {
+    "id": "518bca89-46ed-4771-a656-ec2613b81709",
+    "name": "mikepea-catalog",
+    "description": "NonLoaded",
+    "items": [
+
+    ]
+  },
+  {
+    "id": "2771b2c4-c58c-4851-91d4-0fa72fbaeeae",
+    "name": "Appliances",
+    "description": "NonLoaded",
+    "items": [
+
+    ]
+  },
+  {
+    "id": "daa8798b-4263-4398-8339-9640b7a76d96",
+    "name": "Public Catalog",
+    "description": "NonLoaded",
+    "items": [
+      {
+        "id": "b8305eb1-d5ed-4fee-b728-80198a7bae49",
+        "name": "Windows2K8R2-template",
+        "description": "NonLoaded",
+        "vapp_template_id": "vappTemplate-554ea8ef-7ad1-424f-a6eb-08d1328c836a"
+      },
+      {
+        "id": "57e13c1f-da15-48e5-9a46-a8247f68613c",
+        "name": "Ubuntu-12.04.2-copy-95e1c959-0592-4201-95ac-2744f0490d56",
+        "description": "",
+        "vapp_template_id": "8ac0e08a-d706-4e87-b1c8-19bd31fea13f"
+      },
+      {
+        "id": "e037f348-a2c6-40c4-a28a-a225cf6ae657",
+        "name": "Windows Server 2008 R2 with SP1",
+        "description": "NonLoaded",
+        "vapp_template_id": "2d1a47d8-7b15-4ff4-ab41-59ca7a09e842"
+      }
+    ]
+  },
+  {
+    "id": "75ae5740-f2a1-478b-a7c1-347d6f579766",
+    "name": "Default",
+    "description": "default",
+    "items": [
+      {
+        "id": "164b37da-cdde-44e6-9038-b5b39242296e",
+        "name": "ubuntu-precise-201310091342",
+        "description": "Added with VMware Ovf Tool.",
+        "vapp_template_id": "vappTemplate-009a45e8-5f29-4921-9c81-5242d0c5f5d4"
+      }
+    ]
+  },
+  {
+    "id": "c361d01f-64c2-4ec2-97b4-e0770013ad92",
+    "name": "0e7t Catalog",
+    "description": "NonLoaded",
+    "items": [
+      {
+        "id": "b50b5677-8242-460b-ba3c-ad2cf3db7e5f",
+        "name": "ubuntu-12.04.3-master-idap",
+        "description": "",
+        "vapp_template_id": "2082be65-630b-40f2-9cdb-b3550a6d502e"
+      }
+    ]
+  },
+  {
+    "id": "101e126c-ad0b-42e7-ba47-dfea2a9f1a64",
+    "name": "Images",
+    "description": "NonLoaded",
+    "items": [
+      {
+        "id": "181dab63-0352-4642-bf97-28a5246c00c4",
+        "name": "redhat64x64-1.0.1",
+        "description": "NonLoaded",
+        "vapp_template_id": "vappTemplate-b133a131-32e5-4cb7-8709-a3a0a6173ced"
+      },
+      {
+        "id": "f9a8114b-56ab-426b-b34c-68e05e491a4f",
+        "name": "centos60x64-1.0.1",
+        "description": "NonLoaded",
+        "vapp_template_id": "vappTemplate-c7b754ae-de05-4103-a6d4-a4cb77ce0f12"
+      },
+      {
+        "id": "81672ffc-5640-471e-a1b2-17b8fb145f5e",
+        "name": "redhat60x64-1.0.1",
+        "description": "NonLoaded",
+        "vapp_template_id": "vappTemplate-58a7739e-10e5-4736-b88e-b59a43a298c6"
+      },
+      {
+        "id": "fdfba3af-85e3-4427-9e7c-122ecd2280d2",
+        "name": "redhat62x64-1.0.1",
+        "description": "NonLoaded",
+        "vapp_template_id": "vappTemplate-9077cd5d-26d0-4dc8-9ec8-f2fecceab372"
+      },
+      {
+        "id": "9b9c3b92-34a2-4e79-8826-71fbd40f1278",
+        "name": "redhat61x64-1.0.1",
+        "description": "NonLoaded",
+        "vapp_template_id": "vappTemplate-fb002e9b-e886-450d-9d86-c2f972500ed8"
+      },
+      {
+        "id": "708638dd-0c5f-4d93-9da3-30c070890326",
+        "name": "centos61x64-1.0.1",
+        "description": "NonLoaded",
+        "vapp_template_id": "vappTemplate-a63879ae-1565-4e8d-a808-a7496dc7962a"
+      },
+      {
+        "id": "6d131c7b-f852-4e97-95ca-db15ea7eefa1",
+        "name": "centos63x64-1.0.1",
+        "description": "NonLoaded",
+        "vapp_template_id": "vappTemplate-73165236-6a73-4b95-9c86-a80a3f632c62"
+      },
+      {
+        "id": "85fc373e-efb6-4288-a55f-43a3dda005ad",
+        "name": "centos64x64-1.0.1",
+        "description": "NonLoaded",
+        "vapp_template_id": "vappTemplate-95cfcde8-36ea-44cb-9933-febe1e7e273a"
+      },
+      {
+        "id": "3c6ca9ad-308d-41d9-b168-5f3dab316ac2",
+        "name": "redhat63x64-1.0.1",
+        "description": "NonLoaded",
+        "vapp_template_id": "vappTemplate-03102172-c4a2-489c-a35c-36e405c9676a"
+      },
+      {
+        "id": "40b72361-04ae-47bc-9e3d-ba50b3c5fe07",
+        "name": "centos62x64-1.0.1",
+        "description": "NonLoaded",
+        "vapp_template_id": "vappTemplate-1141d1cc-5bcf-47aa-b51a-acf9d744d33b"
+      }
+    ]
+  }
+]

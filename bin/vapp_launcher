@@ -1,0 +1,121 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'bundler/setup'
+require 'fog'
+require 'pp'
+require 'optparse'
+
+def get_networks(org, network_names)
+  network_names.collect do |name|
+    org.networks.get_by_name(name)
+  end
+end
+
+def parse_args
+  options = {
+    :debug => false,
+    :catalog_name => "Default",
+    :vapp_template_name => "ubuntu-12.04.3-master",
+  }
+
+  opt_parser = OptionParser.new do |opts|
+    opts.banner = "Usage: #{File.basename($0)} [options]"
+    opts.separator ''
+    opts.separator 'Upload an file to a vDC.'
+    opts.separator ''
+    opts.separator 'Available Options:'
+
+    opts.on('-c', '--credential', '=GROUP', 'fog credential group') do |v|
+      options[:credential] = v
+    end
+
+    opts.on('--vdc_name', '=VDC', 'vDC Name') do |v|
+      options[:vdc_name] = v
+    end
+
+    opts.on('--catalog_name', '=CATALOG', 'Catalog Name (default "Default")') do |v|
+      options[:catalog_name] = v
+    end
+
+    opts.on('--vapp_template_name', '=VAPPTEMPLATE', 'vApp Template Name (default "ubuntu-12.04.3-master")') do |v|
+      options[:vapp_template_name] = v
+    end
+
+    opts.on_tail("-h", "--help", "Show usage instructions") do
+      Kernel.abort opt_parser.to_s
+    end
+  end
+
+  begin
+    opt_parser.parse!
+  rescue OptionParser::InvalidOption, OptionParser::MissingArgument => e
+    Kernel.abort "#{$0}: #{e.message}"
+  end
+
+  options
+end
+
+options = parse_args
+
+if options[:debug]
+  # general fog debugging:
+  $ENV['DEBUG'] = "true"
+  # actual HTTP request debugging (very verbose, very useful!):
+  $ENV['EXCON_DEBUG'] = "true"
+end
+
+# Fog also responds to $ENV['FOG_CREDENTIAL']
+Fog.credential = options[:credential] if options[:credential]
+
+vcloud = Fog::Compute::VcloudDirector.new
+
+org = vcloud.organizations.get_by_name(vcloud.org_name)
+
+if org.name 
+  debug "Got vCloud org: #{org.name}"
+else 
+  Kernel.abort "#{$0}: Error retrieving vCloud organization"
+end
+
+unless org.vdcs.size > 0
+  Kernel.abort "#{$0}: No vDCs configured in #{org.name} -- need to have at least one!"
+end
+
+unless vdc = org.vdcs.get_by_name(options[:vdc_name])
+  puts "Could not find a vDC named '#{options[:vdc_name]}' in #{org.name}. Valid vDC names are:"
+  org.vdcs.each do |v| 
+    puts "  #{v.name}"
+  end
+  Kernel.exit(3)
+end
+
+unless catalog = org.catalogs.get_by_name(options[:catalog_name])
+  puts "Could not find a Catalog named '#{options[:catalog_name]}' in #{org.name}. Valid Catalog names are:"
+  org.catalogs.each do |v| 
+    puts "  #{v.name}"
+  end
+  Kernel.exit(4)
+end
+
+unless template = catalog.catalog_items.get_by_name(options[:vapp_template_name])
+  puts "Could not find a vApp Template named '#{options[:vapp_template_name]}' in #{org.name}. Valid vApp Template names are:"
+  catalog.catalog_items.each do |v| 
+    puts "  #{v.name}"
+  end
+  Kernel.exit(5)
+end
+
+
+# Collect information about our vdc.
+# vcloud-walker into vdc object?
+
+# check our configuration against vdc object, to ensure:
+#  network names are valid
+#  ip addresses are valid?
+#  template name is valid?
+#  
+
+# instanciate our vApp(s)
+
+

@@ -1,0 +1,19 @@
+[
+  {
+    "id": "2ad93597-7b54-43dd-9eb1-631dd337e5a7",
+    "name": "Default",
+    "description": null,
+    "is_inherited": false,
+    "gateway": "192.168.1.0",
+    "netmask": "255.255.0.0",
+    "dns1": "8.8.8.8",
+    "dns2": "8.8.4.4",
+    "dns_suffix": "app.default",
+    "ip_ranges": [
+      {
+        "start_address": "192.168.254.100",
+        "end_address": "192.168.254.110"
+      }
+    ]
+  }
+]

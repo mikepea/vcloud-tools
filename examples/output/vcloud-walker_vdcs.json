@@ -1,0 +1,95 @@
+[
+  {
+    "id": "6d64fa20-e98d-46dd-ac18-86275a3fd042",
+    "name": "0e7t-OVDC-001",
+    "description": "NonLoaded",
+    "vapps": [
+      {
+        "name": "vapp_test_1",
+        "status": "4",
+        "deployed": "true",
+        "id": "urn:vcloud:vapp:4750fd46-1c0c-4ab0-9235-8d8c4e3996af",
+        "description": null,
+        "network_config": [
+          {
+            "network_name": "Default",
+            "is_deployed": "true",
+            "description": "",
+            "config": {
+              "ipscopes": {
+                "IpScope": {
+                  "IsInherited": "true",
+                  "Gateway": "192.168.1.0",
+                  "Netmask": "255.255.0.0",
+                  "Dns1": "8.8.8.8",
+                  "Dns2": "8.8.4.4",
+                  "DnsSuffix": "app.default",
+                  "IsEnabled": "true",
+                  "IpRanges": {
+                    "IpRange": {
+                      "StartAddress": "192.168.254.100",
+                      "EndAddress": "192.168.254.110"
+                    }
+                  }
+                }
+              }
+            },
+            "parent_network": "Default"
+          }
+        ],
+        "network_section": {
+          "ovf_name": "Default",
+          "ovf:Description": ""
+        },
+        "vms": [
+          {
+            "id": "urn:vcloud:vm:971d0131-8ba5-46b7-b247-35d8265a5f5a",
+            "status": "4",
+            "operating_system": "Ubuntu Linux (64-bit)",
+            "network_connections": {
+              "network": "Default",
+              "needsCustomization": "true",
+              "NetworkConnectionIndex": "0",
+              "IpAddress": "192.168.254.100",
+              "IsConnected": "true",
+              "MACAddress": "00:50:56:01:0a:a2",
+              "IpAddressAllocationMode": "MANUAL"
+            },
+            "primary_network_connection_index": "0",
+            "cpu": "1 virtual CPU(s)",
+            "memory": "256 MB of memory",
+            "disks": [
+              {
+                "name": "Hard disk 1",
+                "size": 11265
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "quotas": {
+      "network": 1024,
+      "nic": 0,
+      "vm": 0
+    },
+    "compute_capacity": {
+      "Cpu": {
+        "Units": "MHz",
+        "Allocated": "0",
+        "Limit": "0",
+        "Reserved": "0",
+        "Used": "2200",
+        "Overhead": "0"
+      },
+      "Memory": {
+        "Units": "MB",
+        "Allocated": "0",
+        "Limit": "0",
+        "Reserved": "0",
+        "Used": "256",
+        "Overhead": "19"
+      }
+    }
+  }
+]
